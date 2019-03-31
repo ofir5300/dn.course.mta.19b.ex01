@@ -19,9 +19,26 @@ namespace B19_Ex01_01
              */
 
         }
+        private static int[] getInputFromUser()
 
-        private int convertBinaryToDecimal(int i_binNumber)
         {
+        int[] o_inputArray = new int[8];
+        int i_inputCounter = 0;
+        bool v_isValidInput = true;
+
+        Console.WriteLine("Please enter 4 binary numbers with 8 digits each");
+            do
+            {
+                Console.WriteLine("please enter value number {0}", i_inputCounter);     // input +1
+                o_inputArray[i_inputCounter] = Console.ReadLine();
+
+            } while (!v_isValidInput);
+
+            return o_inputArray;
+        }
+
+          private int convertBinaryToDecimal(int i_binNumber)
+           { 
             int o_decNumber = 0;
 
             for(int i = 0; i < 8; i++)
@@ -32,6 +49,5 @@ namespace B19_Ex01_01
 
             return o_decNumber;
         }
-
     }
 }
