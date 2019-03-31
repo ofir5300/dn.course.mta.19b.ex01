@@ -63,19 +63,21 @@ namespace B19_Ex01_01
             return true;
         }
 
-        private int convertBinaryToDecimal(int i_binNumber)
-        {
+        private int convertBinaryToDecimal(String i_binNumber)
+           { 
             int o_decNumber = 0;
             for (int i = 0; i < 8; i++)
             {
-                o_decNumber += (i_binNumber % 10) * (int)(Math.Pow(2, i));
-                i_binNumber /= 10;
+                if(i_binNumber[i] == '1')
+                {
+                    o_decNumber += (int)(Math.Pow(2, i));
+                }
             }
 
             return o_decNumber;
         }
 
-        private int calculateAvarageDigitAppearances(int[] i_binNumbersArr, int i_digit)
+        private int calculateAvarageDigitAppearances(String[] i_binNumbersArr, int i_digit)
         {
             int digitCount = 0, average;
 
@@ -83,8 +85,10 @@ namespace B19_Ex01_01
             {
                 for(int j = 0; j < 8; j++)
                 {
-                    digitCount += Convert.ToInt32((i_binNumbersArr[i] % 10) == i_digit);
-                    i_binNumbersArr[i] /= 10;
+                    if (i_binNumbersArr[i][j] == Convert.ToChar(i_digit)
+                    {
+                        digitCount++;
+                    }
                 }
             }
 
@@ -124,5 +128,20 @@ namespace B19_Ex01_01
         }
 
 
+
+        private int countPowerOf2Numbers(int[] i_decNumbersArr)
+        {
+            int counter = 0;
+
+            for (int i = 0; i < i_decNumbersArr.Length; i++)
+            {
+                if(Math.Sqrt((double)i_decNumbersArr[i]) == Math.Sqrt(i_decNumbersArr[i]))
+                {
+                    counter++;
+                }
+            }
+
+            return counter;
+        }
     }
 }
