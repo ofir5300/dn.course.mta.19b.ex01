@@ -37,7 +37,7 @@ namespace B19_Ex01_01
             return o_inputArray;
         }
 
-          private int convertBinaryToDecimal(int i_binNumber)
+        private int convertBinaryToDecimal(int i_binNumber)
            { 
             int o_decNumber = 0;
 
@@ -48,6 +48,24 @@ namespace B19_Ex01_01
             }
 
             return o_decNumber;
+        }
+
+        private int calculateAvarageDigitAppearances(int[] i_binNumbersArr, int i_digit)
+        {
+            int digitCount = 0, average;
+
+            for(int i = 0; i < i_binNumbersArr.Length; i++)
+            {
+                for(int j = 0; j < 8; j++)
+                {
+                    digitCount += Convert.ToInt32((i_binNumbersArr[i] % 10) == i_digit);
+                    i_binNumbersArr[i] /= 10;
+                }
+            }
+
+            average = digitCount / i_binNumbersArr.Length;
+
+            return average;
         }
     }
 }
