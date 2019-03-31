@@ -37,5 +37,17 @@ namespace B19_Ex01_01
 
             return o_inputArray;
         }
+
+        private int convertBinaryToDecimal(int i_binNumber)
+        {
+            int o_decNumber = 0;
+            for (int i = 0; i < 8; i++)
+            {
+                o_decNumber += (i_binNumber % 10) * (int)(Math.Pow(2, i));
+                i_binNumber /= 10;
+            }
+
+            return o_decNumber;
+        }
     }
 }
