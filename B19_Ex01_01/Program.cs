@@ -155,17 +155,17 @@ namespace B19_Ex01_01
 
         private static int countPowerOf2Numbers(int[] i_decNumbersArr)
         {
-            int counter = 0;
+            int o_counter = 0;
 
             for (int i = 0; i < i_decNumbersArr.Length; i++)
             {
                 if((int)Math.Sqrt(i_decNumbersArr[i]) == (double)Math.Sqrt(i_decNumbersArr[i]))
                 {
-                    counter++;
+                    o_counter++;
                 }
             }
 
-            return counter;
+            return o_counter;
         }
     }
 }
