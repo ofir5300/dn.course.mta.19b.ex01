@@ -52,7 +52,7 @@ namespace B19_Ex01_01
             return o_decNumber;
         }
 
-        private int calculateAvarageDigitAppearances(int[] i_binNumbersArr, int i_digit)
+        private int calculateAvarageDigitAppearances(String[] i_binNumbersArr, int i_digit)
         {
             int digitCount = 0, average;
 
@@ -60,8 +60,10 @@ namespace B19_Ex01_01
             {
                 for(int j = 0; j < 8; j++)
                 {
-                    digitCount += Convert.ToInt32((i_binNumbersArr[i] % 10) == i_digit);
-                    i_binNumbersArr[i] /= 10;
+                    if (i_binNumbersArr[i][j] == Convert.ToChar(i_digit)
+                    {
+                        digitCount++;
+                    }
                 }
             }
 
