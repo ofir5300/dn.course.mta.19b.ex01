@@ -16,8 +16,9 @@ namespace B19_Ex01_01
              * private int countPowerOf2Numbers(int[] i_binNumbersArr)
              * private int calculateDecimalAvarage(int[] i_decNumbersArr)
              * private bool checkValidInput(int i_input)
+             * private static bool isNumberAnIncreasingSeries(int i_number)
+
              */
-            getInputFromUser();
         }
 
         private static string[] getInputFromUser()
@@ -91,5 +92,37 @@ namespace B19_Ex01_01
 
             return average;
         }
+
+        private static bool isNumberAnIncreasingSeries(int i_number)
+        {
+            int i_LSB;
+
+            while(i_number != 0)
+            {
+                i_LSB = i_number % 10;
+                i_number /= 10;
+
+                if (i_LSB <= i_number % 10)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        private static int calculateDecimalAvarage(int[] i_decNumbersArr)
+        {
+            int i_sum = 0;
+
+            for(int i = 0; i < i_decNumbersArr.Length; i++)
+            {
+                i_sum += i_decNumbersArr[i];
+            }
+
+            return i_sum / i_decNumbersArr.Length;
+        }
+
+
     }
 }
