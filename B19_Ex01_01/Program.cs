@@ -10,7 +10,7 @@ namespace B19_Ex01_01
         public static void Main()
         {
             // functions: 
-            // off
+            // ilan
             /* private static int[] getInputFromUser
              * private int convertBinaryToDecimal(int i_binNumber)
              * private int calculateAvarageDigitAppearances(int[] i_binNumbersArr)
