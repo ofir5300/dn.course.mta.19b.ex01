@@ -17,30 +17,55 @@ namespace B19_Ex01_01
              * private int calculateDecimalAvarage(int[] i_decNumbersArr)
              * private bool checkValidInput(int i_input)
              */
-
+            getInputFromUser();
         }
-        private static int[] getInputFromUser()
 
+        private static string[] getInputFromUser()
         {
-        int[] o_inputArray = new int[8];
-        int i_inputCounter = 0;
-        bool v_isValidInput = true;
+            string[] o_inputArray = new string[4];
+            string i_input;
+            int i_inputCounter;
+            bool v_isValidInput = true;
 
-        Console.WriteLine("Please enter 4 binary numbers with 8 digits each");
-            do
+            Console.WriteLine("Please enter 4 binary numbers with 8 digits each");
+            for (i_inputCounter = 0; i_inputCounter < 4; i_inputCounter++)
             {
-                Console.WriteLine("please enter value number {0}", i_inputCounter);     // input +1
-                o_inputArray[i_inputCounter] = Console.ReadLine();
-
-            } while (!v_isValidInput);
+                do
+                {
+                    Console.WriteLine("please enter value number {0}: ", i_inputCounter + 1);
+                    i_input = Console.ReadLine();       
+                    v_isValidInput = checkValidInput(i_input);
+                } while (!v_isValidInput);                      // procceed only if the current input is valid
+                o_inputArray[i_inputCounter] = i_input;
+            }
 
             return o_inputArray;
         }
 
-          private int convertBinaryToDecimal(int i_binNumber)
-           { 
+        private static bool checkValidInput(string i_input)
+        {
+            if (i_input.Length != 8)
+            {
+                Console.WriteLine("The number has to be 8 digits length! Please insert a valid number");
+                return false;
+            }
+
+            for (int i = 0; i < 8; i++)
+            {
+                if (i_input[i] != '0' && i_input[i] != '1')
+                {
+                    Console.WriteLine("All digit must be 1 or 0 in a binary number! Please insert a valid number");
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        private int convertBinaryToDecimal(int i_binNumber)
+        {
             int o_decNumber = 0;
-            for(int i = 0; i < 8; i++)
+            for (int i = 0; i < 8; i++)
             {
                 o_decNumber += (i_binNumber % 10) * (int)(Math.Pow(2, i));
                 i_binNumber /= 10;
