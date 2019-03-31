@@ -12,13 +12,36 @@ namespace B19_Ex01_01
             // functions: 
             /* private static int[] getInputFromUser
              * private int convertBinaryToDecimal(int i_binNumber)
-             * private int calculateAvarageDigitAppearances(int[] i_binNumbersArr)
+        private static int calculateAvarageDigitAppearances(String[] i_binNumbersArr, int i_digit)
              * private int countPowerOf2Numbers(int[] i_binNumbersArr)
              * private int calculateDecimalAvarage(int[] i_decNumbersArr)
              * private bool checkValidInput(int i_input)
              * private static bool isNumberAnIncreasingSeries(int i_number)
 
              */
+            string[] i_binaryInputArray = getInputFromUser();
+            int[] i_decimalArray = new int[i_binaryInputArray.Length];
+            int i_numberOfAscendingSerieses = 0;
+
+            Console.WriteLine("The numbers you entered in decimal form are : ");
+            for(int i = 0; i < i_binaryInputArray.Length; i++)
+            {
+                Console.WriteLine(i_decimalArray[i] = convertBinaryToDecimal(i_binaryInputArray[i]));
+            }
+            Console.WriteLine("Avarage apearences of 0's in each binary number : {0}\n" +
+                    "Avarage apearences of 1's in each binary number : {1}",
+                    calculateAvarageDigitAppearances(i_binaryInputArray, 0), calculateAvarageDigitAppearances(i_binaryInputArray, 1));
+            Console.WriteLine("The count of numbers which is a power of 2 is : " + countPowerOf2Numbers(i_decimalArray));
+            for (int i = 0; i < i_decimalArray.Length; i++)
+            {
+                if(isNumberAnAscendingSeries(i_decimalArray[i]))
+                {
+                    i_numberOfAscendingSerieses++;
+                }
+            }
+            Console.WriteLine("The count of numbers which is a ascending series is : " + i_numberOfAscendingSerieses);
+            Console.WriteLine("The avarage of the given numers is : " + calculateDecimalAvarage(i_decimalArray));
+            Console.ReadLine();
         }
 
         private static string[] getInputFromUser()
@@ -63,41 +86,42 @@ namespace B19_Ex01_01
             return true;
         }
 
-        private int convertBinaryToDecimal(String i_binNumber)
-           { 
+        private static int convertBinaryToDecimal(String i_binNumber)
+        { 
             int o_decNumber = 0;
-            for (int i = 0; i < 8; i++)
+            for (int i = 7; i >= 0; i--)
             {
                 if(i_binNumber[i] == '1')
                 {
-                    o_decNumber += (int)(Math.Pow(2, i));
+                    o_decNumber += (int)(Math.Pow(2, 7 - i));
                 }
             }
 
             return o_decNumber;
         }
 
-        private int calculateAvarageDigitAppearances(String[] i_binNumbersArr, int i_digit)
+        private static int calculateAvarageDigitAppearances(String[] i_binNumbersArr, int i_digit)
         {
-            int digitCount = 0, average;
+            int i_digitCount = 0, i_average;
 
-            for(int i = 0; i < i_binNumbersArr.Length; i++)
+
+            for (int i = 0; i < i_binNumbersArr.Length; i++)
             {
-                for(int j = 0; j < 8; j++)
+                for (int j = 0; j < 8; j++)
                 {
-                    if (i_binNumbersArr[i][j] == Convert.ToChar(i_digit)
+                    if (i_binNumbersArr[i][j] == i_digit + '0')
                     {
-                        digitCount++;
+                        i_digitCount++;
                     }
                 }
             }
 
-            average = digitCount / i_binNumbersArr.Length;
+            i_average = i_digitCount / i_binNumbersArr.Length;
 
-            return average;
+            return i_average;
         }
 
-        private static bool isNumberAnIncreasingSeries(int i_number)
+        private static bool isNumberAnAscendingSeries(int i_number)
         {
             int i_LSB;
 
@@ -129,13 +153,13 @@ namespace B19_Ex01_01
 
 
 
-        private int countPowerOf2Numbers(int[] i_decNumbersArr)
+        private static int countPowerOf2Numbers(int[] i_decNumbersArr)
         {
             int counter = 0;
 
             for (int i = 0; i < i_decNumbersArr.Length; i++)
             {
-                if(Math.Sqrt((double)i_decNumbersArr[i]) == Math.Sqrt(i_decNumbersArr[i]))
+                if((int)Math.Sqrt(i_decNumbersArr[i]) == (double)Math.Sqrt(i_decNumbersArr[i]))
                 {
                     counter++;
                 }
