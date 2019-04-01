@@ -20,7 +20,7 @@ namespace B19_Ex01_04
              */
 
             while (true)
-                Console.WriteLine(isDivisibleBy3("13"));
+                Console.WriteLine(isPalyndrom("abba", 0, 12));
             Console.ReadLine();
 
         }
@@ -126,6 +126,22 @@ namespace B19_Ex01_04
 
             return true;
         }
+
+        private static bool isPalyndrom(String i_input, int i_start, int i_end)
+        {
+            if(i_start == i_end)
+            {
+                return true;
+            }
+
+            if(i_input[i_start] != i_input[i_end])
+            {
+                return false;
+            }
+
+            return isPalyndrom(i_input, i_start - 1, i_end -1);
+        }
+
     }
 }
 
