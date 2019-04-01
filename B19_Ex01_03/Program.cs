@@ -22,7 +22,7 @@ namespace B19_Ex01_03
                 i_input = Console.ReadLine();
             }
 
-            PrintTree(i_clockSize, i_clockSize);
+            B19_Ex01_02.Program.PrintTree(i_clockSize, i_clockSize);
             Console.ReadLine();
         }
     }
