@@ -19,6 +19,9 @@ namespace B19_Ex01_04
              * 
              */
 
+            String i_input = getInputFromUser();
+            Console.ReadLine();
+
         }
 
         private static int countLowerCaseLetters(String i_input)
@@ -45,23 +48,76 @@ namespace B19_Ex01_04
         {
             int i_decimalInput;
 
-            if(isOnlyDigits(i_input))
+            if(!int.TryParse(i_input, out i_decimalInput))              // if the string cannot be convert to int it cannot by divide by 3
             {
-                int.TryParse(i_input, out i_decimalInput);
-                if(i_decimalInput % 3 != 0)
-                {
-                    Console.WriteLine("The number is divisible by 3");
-                    return true;
-                }
-                else
-                {
-                    Console.WriteLine("The number is not divisible by 3");
-                    return true;
-                }
+                return false;
             }
-            Console.WriteLine("The string is not a number so cannot be divide by 3");
+            else if(i_decimalInput % 3 != 0)                            
+            {
+                return false;
+            }
 
             return false;
         }
     }
+    private static String getInputFromUser()
+    {
+        String i_input;
+        Console.WriteLine("Please enter 12 letters or numbers:");
+        i_input = Console.ReadLine();
+
+        while (!checkValidInput(i_input))
+        {
+            Console.WriteLine("Please enter valid input:");
+            i_input = Console.ReadLine();
+        }
+
+        return i_input;
+    }
+
+    private static bool checkValidInput(String i_input)
+    {
+        bool onlyLetters, onlyDigits, validLength;
+
+        // check validity rules
+        validLength = (i_input.Length == 12);
+        onlyDigits = isOnlydigits(i_input);
+        onlyLetters = isOnlyEnglishLetters(i_input);
+
+        // return result
+        if ((onlyLetters || onlyDigits) && validLength)
+        {
+            return true;
+        }
+
+        Console.WriteLine("The string should consist of only 12 numbers or only 12 English letters.");
+        return false;
+    }
+
+    public static bool isOnlydigits(String i_input)
+    {
+        foreach (char c in i_input)
+        {
+            if (!Char.IsDigit(c))
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public static bool isOnlyEnglishLetters(String i_input)
+    {
+        foreach (char c in i_input)
+        {
+            if (!Char.IsLetter(c))
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+}
 }
