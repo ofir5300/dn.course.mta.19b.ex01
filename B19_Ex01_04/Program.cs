@@ -29,8 +29,12 @@ namespace B19_Ex01_04
             {
                 return false;
             }
+            else if(i_decimalInput % 3 != 0)                            
+            {
+                return false;
+            }
 
-
+            return true;
         }
     }
 }
