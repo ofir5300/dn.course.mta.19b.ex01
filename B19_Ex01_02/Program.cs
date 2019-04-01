@@ -21,11 +21,11 @@ namespace B19_Ex01_02
                 i_input = Console.ReadLine();
             }
 
-            printTree(i_clockSize, i_clockSize);
+            PrintTree(i_clockSize, i_clockSize);
             Console.ReadLine();
         }
 
-        private static void printTree(int i_toPrint, int i_initialSize)
+        public static void PrintTree(int i_toPrint, int i_initialSize)
         {
             if (i_toPrint <= 0)
             {
@@ -35,7 +35,7 @@ namespace B19_Ex01_02
             // Top part
             printClockLine(i_toPrint, i_initialSize);
             // Recursive call
-            printTree(i_toPrint - 2, i_initialSize);
+            PrintTree(i_toPrint - 2, i_initialSize);
             // Bottom part
             printClockLine(i_toPrint, i_initialSize);
         }
