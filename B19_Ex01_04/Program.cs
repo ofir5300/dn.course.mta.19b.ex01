@@ -19,10 +19,12 @@ namespace B19_Ex01_04
              * 
              */
 
-            while (true)
-                Console.WriteLine(isDivisibleBy3("13"));
-            Console.ReadLine();
+            String i_input = getInputFromUser();
+            // isPalyndrom
+            isDivisibleBy3(i_input);
+            countLowerCaseLetters(i_input);
 
+            Console.ReadLine();
         }
 
         private static int countLowerCaseLetters(String i_input)
@@ -47,11 +49,13 @@ namespace B19_Ex01_04
 
         private static bool isDivisibleBy3(String i_input)
         {
-            int i_decimalInput;
-            if(isOnlydigits(i_input))
+            Int64 i_decimalInput;
+            
+            if (isOnlydigits(i_input))
             {
-                int.TryParse(i_input, out i_decimalInput);
-                if(i_decimalInput % 3 == 0)
+                Int64.TryParse(i_input, out i_decimalInput);
+
+                if ((double)i_decimalInput % (double)3 == 0)
                 {
                     Console.WriteLine("The number is divisble by 3");
                     return true;
