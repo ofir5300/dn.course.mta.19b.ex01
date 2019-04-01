@@ -5,16 +5,23 @@ using System.Text;
 
 namespace B19_Ex01_04
 {
-    public class Program
+    class Program
     {
         public static void Main()
         {
-            String i_input = getInputFromUser();
-            isPalyndrom(i_input);
-            isDivisibleBy3(i_input);
-            countLowerCaseLetters(i_input);
 
+            /*
+             * private static String getInputFromUser()
+             * private static bool checkValidInput(String i_input)
+             * private static bool isPalyndrom(String i_input)
+             * private static bool isDivisibleBy3(String i_input)       V
+             * private static int countLowerCaseLetters(String i_input)
+             * 
+             */
+
+            String i_input = getInputFromUser();
             Console.ReadLine();
+
         }
 
         private static int countLowerCaseLetters(String i_input)
@@ -37,118 +44,83 @@ namespace B19_Ex01_04
             return i_lowerCaseCounter;
         }
 
-        private static bool isDivisibleBy3(String i_input)
-        {
-            Int64 i_decimalInput;
-            
-            if (isOnlydigits(i_input))
+        private static String getInputFromUser()
             {
-                Int64.TryParse(i_input, out i_decimalInput);
+                String i_input;
+                Console.WriteLine("Please enter 12 letters or numbers:");
+                i_input = Console.ReadLine();
 
-                if ((double)i_decimalInput % (double)3 == 0)
+                while (!checkValidInput(i_input))
                 {
-                    Console.WriteLine("The number is divisble by 3");
+                    Console.WriteLine("Please enter valid input:");
+                    i_input = Console.ReadLine();
+                }
+
+                return i_input;
+            }
+
+            private static bool checkValidInput(String i_input)
+            {
+                bool onlyLetters, onlyDigits, validLength;
+
+                // check validity rules
+                validLength = (i_input.Length == 12);
+                onlyDigits = isOnlydigits(i_input);
+                onlyLetters = isOnlyEnglishLetters(i_input);
+
+                // return result
+                if ((onlyLetters || onlyDigits) && validLength)
+                {
                     return true;
                 }
-                else
-                {
-                    Console.WriteLine("The number is not divisble by 3");
-                    return false;
-                }
-            }
-            Console.WriteLine("The string is not a number so cannot be divide by 3");
 
-            return false;
-        }
-
-        private static String getInputFromUser()
-        {
-            String i_input;
-            Console.WriteLine("Please enter 12 letters or numbers:");
-            i_input = Console.ReadLine();
-
-            while (!checkValidInput(i_input))
-            {
-                Console.WriteLine("Please enter valid input:");
-                i_input = Console.ReadLine();
-            }
-
-            return i_input;
-        }
-
-        private static bool checkValidInput(String i_input)
-        {
-            bool onlyLetters, onlyDigits, validLength;
-
-            // check validity rules
-            validLength = (i_input.Length == 12);
-            onlyDigits = isOnlydigits(i_input);
-            onlyLetters = isOnlyEnglishLetters(i_input);
-
-            // return result
-            if ((onlyLetters || onlyDigits) && validLength)
-            {
-                return true;
-            }
-
-            Console.WriteLine("The string should consist of only 12 numbers or only 12 English letters.");
-            return false;
-        }
-
-        public static bool isOnlydigits(String i_input)
-        {
-            foreach (char c in i_input)
-            {
-                if (!Char.IsDigit(c))
-                {
-                    return false;
-                }
-            }
-
-            return true;
-        }
-
-        public static bool isOnlyEnglishLetters(String i_input)
-        {
-            foreach (char c in i_input)
-            {
-                if (!Char.IsLetter(c))
-                {
-                    return false;
-                }
-            }
-
-            return true;
-        }
-
-        private static void isPalyndrom(String i_input)
-        {
-            if (isOnlyEnglishLetters(i_input))
-            {
-                Console.WriteLine("The string is {0} a palyndrom",
-                isPalyndromRecursive(i_input, 0, i_input.Length - 1) ? "indeed" : "not");
-            }
-            else
-            {
-                Console.WriteLine("The string is not a text so cannot be a palyndrom");
-            }
-        }
-
-        private static bool isPalyndromRecursive(String i_input, int i_start, int i_end)
-        {
-            if(i_start >= i_end)
-            {
-                return true;
-            }
-
-            if(i_input[i_start] != i_input[i_end])
-            {
+                Console.WriteLine("The string should consist of only 12 numbers or only 12 English letters.");
                 return false;
             }
 
-            return isPalyndromRecursive(i_input, i_start + 1, i_end -1);
+        private static bool isDivisibleBy3(String i_input)
+        {
+            int i_decimalInput;
+
+            public static bool isOnlydigits(String i_input)
+            {
+                foreach (char c in i_input)
+                {
+                    if (!Char.IsDigit(c))
+                    {
+                        return false;
+                    }
+                }
+
+                return true;
+            }
+
+            public static bool isOnlyEnglishLetters(String i_input)
+            {
+                foreach (char c in i_input)
+                {
+                    if (!Char.IsLetter(c))
+                    {
+                        return false;
+                    }
+                }
+                if (isOnlyDigits(i_input))
+                {
+                    int.TryParse(i_input, out i_decimalInput);
+                    if (i_decimalInput % 3 != 0)
+                    {
+                        Console.WriteLine("The number is divisible by 3");
+                        return true;
+                    }
+                    else
+                    {
+                        Console.WriteLine("The number is not divisible by 3");
+                        return true;
+                    }
+                }
+                Console.WriteLine("The string is not a number so cannot be divide by 3");
+
+                return false;
+            }
         }
-
     }
-}
-
