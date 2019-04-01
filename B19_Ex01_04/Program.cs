@@ -9,18 +9,8 @@ namespace B19_Ex01_04
     {
         public static void Main()
         {
-
-            /*
-             * private static String getInputFromUser()
-             * private static bool checkValidInput(String i_input)
-             * private static bool isPalyndrom(String i_input)
-             * private static bool isDivisibleBy3(String i_input)       V
-             * private static int countLowerCaseLetters(String i_input)
-             * 
-             */
-
             String i_input = getInputFromUser();
-            // isPalyndrom
+            isPalyndrom(i_input);
             isDivisibleBy3(i_input);
             countLowerCaseLetters(i_input);
 
@@ -131,9 +121,22 @@ namespace B19_Ex01_04
             return true;
         }
 
-        private static bool isPalyndrom(String i_input, int i_start, int i_end)
+        private static void isPalyndrom(String i_input)
         {
-            if(i_start == i_end)
+            if (isOnlyEnglishLetters(i_input))
+            {
+                Console.WriteLine("The string is {0} a palyndrom",
+                isPalyndromRecursive(i_input, 0, i_input.Length - 1) ? "indeed" : "not");
+            }
+            else
+            {
+                Console.WriteLine("The string is not a text so cannot be a palyndrom");
+            }
+        }
+
+        private static bool isPalyndromRecursive(String i_input, int i_start, int i_end)
+        {
+            if(i_start >= i_end)
             {
                 return true;
             }
@@ -143,7 +146,7 @@ namespace B19_Ex01_04
                 return false;
             }
 
-            return isPalyndrom(i_input, i_start - 1, i_end -1);
+            return isPalyndromRecursive(i_input, i_start + 1, i_end -1);
         }
 
     }
