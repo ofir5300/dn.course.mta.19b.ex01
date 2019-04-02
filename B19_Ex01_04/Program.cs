@@ -22,6 +22,7 @@ namespace B19_Ex01_04
                 Console.WriteLine("The string is a number so it has no Lower Case letters");
                 return 0;
             }
+
             for (int i = 0; i < i_Input.Length; i++)
             {
                 if (i_Input[i] <= 'z' && i_Input[i] >= 'a')
@@ -29,6 +30,7 @@ namespace B19_Ex01_04
                     lowerCaseCounter++;
                 }
             }
+
             Console.WriteLine("The string consist {0} lower case letters", lowerCaseCounter);
 
             return lowerCaseCounter;
@@ -36,11 +38,11 @@ namespace B19_Ex01_04
 
         private static bool isDivisibleBy3(string i_Input)
         {
-            Int64 decimalInput;
+            ulong decimalInput;
 
             if (isOnlydigits(i_Input))
             {
-                Int64.TryParse(i_Input, out decimalInput);
+                ulong.TryParse(i_Input, out decimalInput);
 
                 if ((double)decimalInput % (double)3 == 0)
                 {
@@ -53,6 +55,7 @@ namespace B19_Ex01_04
                     return false;
                 }
             }
+
             Console.WriteLine("The string is not a number so cannot be divide by 3");
 
             return false;
@@ -78,7 +81,7 @@ namespace B19_Ex01_04
             bool v_onlyLetters, v_onlyDigits, v_validLength;
 
             // check validity rules
-            v_validLength = (i_Input.Length == 12);
+            v_validLength = i_Input.Length == 12;
             v_onlyDigits = isOnlydigits(i_Input);
             v_onlyLetters = isOnlyEnglishLetters(i_Input);
 
@@ -96,7 +99,7 @@ namespace B19_Ex01_04
         {
             foreach (char c in i_Input)
             {
-                if (!Char.IsDigit(c))
+                if (!char.IsDigit(c))
                 {
                     return false;
                 }
@@ -122,8 +125,9 @@ namespace B19_Ex01_04
         {
             if (isOnlyEnglishLetters(i_Input))
             {
-                Console.WriteLine("The string is {0} a palyndrom",
-                isPalyndromRecursive(i_Input, 0, i_Input.Length - 1) ? "indeed" : "not");
+                Console.WriteLine(
+                    "The string is {0} a palyndrom",
+                    isPalyndromRecursive(i_Input, 0, i_Input.Length - 1) ? "indeed" : "not");
             }
             else
             {
@@ -145,6 +149,5 @@ namespace B19_Ex01_04
 
             return isPalyndromRecursive(i_Input, i_Start + 1, i_End - 1);
         }
-
     }
 }

@@ -2,7 +2,7 @@
 
 namespace B19_Ex01_05
 {
-    class Program
+    public class Program
     {
         public static void Main()
         {
@@ -21,7 +21,7 @@ namespace B19_Ex01_05
             foreach (char c in i_Input)
             {
                 currentDigit = c - '0';
-                if(biggestDigit < currentDigit)
+                if (biggestDigit < currentDigit)
                 {
                     biggestDigit = currentDigit;
                 }
@@ -52,7 +52,7 @@ namespace B19_Ex01_05
             foreach (char c in i_Input)
             {
                 currentDigit = c - '0';
-                if((double)currentDigit % 3 == 0)
+                if ((double)currentDigit % 3 == 0)
                 {
                     o_Counter++;
                 }
@@ -87,7 +87,8 @@ namespace B19_Ex01_05
             do
             {
                 io_Input = Console.ReadLine();
-            } while (!checkUserInput(io_Input));
+            }
+            while (!checkUserInput(io_Input));
 
             return io_Input;
         }
@@ -101,12 +102,12 @@ namespace B19_Ex01_05
                 Console.WriteLine("Your input is different than 8 digits, please try again");
                 return false;
             }
-            else if(!Int32.TryParse(i_Input, out i_DecimalInput))
+            else if (!int.TryParse(i_Input, out i_DecimalInput))
             {
                 Console.WriteLine("Your input is not a number, please try again");
                 return false;
             }
-            else if(i_DecimalInput <= 0)
+            else if (i_DecimalInput <= 0)
             {
                 Console.WriteLine("Your input is not positive, please try again");
                 return false;
@@ -114,7 +115,5 @@ namespace B19_Ex01_05
 
             return true;
         }
-
-
     }
 }

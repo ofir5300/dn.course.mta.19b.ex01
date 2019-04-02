@@ -2,7 +2,7 @@
 
 namespace B19_Ex01_01
 {
-    class Program
+    public class Program
     {
         public static void Main()
         {
@@ -15,9 +15,11 @@ namespace B19_Ex01_01
             {
                 Console.WriteLine(decimalArray[i] = convertBinaryToDecimal(binaryInputArray[i]));
             }
-            Console.WriteLine("Avarage apearences of 0's in each binary number : {0}\n" +
-                    "Avarage apearences of 1's in each binary number : {1}",
-                    calculateAvarageDigitAppearances(binaryInputArray, 0), calculateAvarageDigitAppearances(binaryInputArray, 1));
+
+            Console.WriteLine(
+                "Avarage apearences of 0's in each binary number : {0}\nAvarage apearences of 1's in each binary number : {1}",
+                calculateAvarageDigitAppearances(binaryInputArray, 0),
+                calculateAvarageDigitAppearances(binaryInputArray, 1));
             Console.WriteLine("The count of numbers which is a power of 2 is : " + countPowerOf2Numbers(decimalArray));
             for (int i = 0; i < decimalArray.Length; i++)
             {
@@ -26,6 +28,7 @@ namespace B19_Ex01_01
                     numberOfAscendingSerieses++;
                 }
             }
+
             Console.WriteLine("The count of numbers which is a ascending series is : " + numberOfAscendingSerieses);
             Console.WriteLine("The avarage of the given numers is : " + calculateDecimalAvarage(decimalArray));
             Console.ReadLine();
@@ -46,7 +49,8 @@ namespace B19_Ex01_01
                     Console.WriteLine("please enter value number {0}: ", i_InputCounter + 1);
                     Input = Console.ReadLine();
                     v_isValidInput = checkValidInput(Input);
-                } while (!v_isValidInput);                      // procceed only if the current input is valid
+                }
+                while (!v_isValidInput);                      // procceed only if the current input is valid
                 o_InputArray[i_InputCounter] = Input;
             }
 
@@ -80,7 +84,7 @@ namespace B19_Ex01_01
             {
                 if (i_BinNumber[i] == '1')
                 {
-                    o_DecNumber += (int)(Math.Pow(2, 7 - i));
+                    o_DecNumber += (int)Math.Pow(2, 7 - i);
                 }
             }
 
@@ -90,7 +94,6 @@ namespace B19_Ex01_01
         private static int calculateAvarageDigitAppearances(string[] i_BinNumbersArr, int i_Digit)
         {
             int i_digitCount = 0, i_average;
-
 
             for (int i = 0; i < i_BinNumbersArr.Length; i++)
             {
@@ -137,8 +140,6 @@ namespace B19_Ex01_01
 
             return i_sum / i_decNumbersArr.Length;
         }
-
-
 
         private static int countPowerOf2Numbers(int[] i_DecNumbersArr)
         {

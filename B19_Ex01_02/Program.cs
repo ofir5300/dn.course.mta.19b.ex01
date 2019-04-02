@@ -19,8 +19,10 @@ namespace B19_Ex01_02
 
             // Top part
             printClockLine(i_ToPrint, i_InitialSize);
+
             // Recursive call
             PrintTree(i_ToPrint - 2, i_InitialSize);
+            
             // Bottom part
             if(i_ToPrint != 1 && i_ToPrint != 2)
             {
@@ -51,7 +53,7 @@ namespace B19_Ex01_02
                 Console.Write(" ");
             }
 
-            Console.WriteLine("");
+            Console.WriteLine(string.Empty);
         }
     }
 }

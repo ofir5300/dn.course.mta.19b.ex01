@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C9B46080-6863-4320-87CB-7D304BDEB989}</ProjectGuid>
+    <ProjectGuid>{AF5D1027-0D16-4F6E-A69E-907F281194CC}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>B19_Ex01_05</RootNamespace>
     <AssemblyName>B19_Ex01_05</AssemblyName>
@@ -33,12 +33,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\B19_Ex01_04\B19_Ex01_04.csproj">
-      <Project>{368101f2-6135-4668-874a-518a85d07f1f}</Project>
-      <Name>B19_Ex01_04</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

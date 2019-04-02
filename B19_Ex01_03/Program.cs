@@ -1,9 +1,8 @@
 ﻿using System;
 
-
 namespace B19_Ex01_03
 {
-    class Program
+    public class Program
     {
         public static void Main()
         {
