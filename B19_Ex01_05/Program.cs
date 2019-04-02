@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace B19_Ex01_05
 {
@@ -9,18 +6,18 @@ namespace B19_Ex01_05
     {
         public static void Main()
         {
-            /*
-             * private static string getInputFromUser();
-             * private static bool checkUserInput(string i_input);
-             * private static int biggestDigitInString(string i_input);
-             * private static int smallestDigitInString(string i_input);
-             * 
-             */
+            string i_input = getInputFromUser();
+            Console.WriteLine("The biggest digit in the number given is : " + biggestDigitInString(i_input));
+            Console.WriteLine("The smallest digit in the number given is : " + smallestDigitInString(i_input));
+            Console.WriteLine("The count of digits which can be divide by 3 is : " + countDivisibleBy3Numbers(i_input));
+            Console.WriteLine("The count of digits which is bigger than the least significant digit is: " + countDigitsBiggerThanLSD(i_input));
+
+            Console.ReadLine();
         }
 
         private static int biggestDigitInString(string i_input)
         {
-            int o_biggestDigit = i_input[0], i_currentDigit;
+            int o_biggestDigit = i_input[0] - '0', i_currentDigit;
             foreach (char c in i_input)
             {
                 i_currentDigit = c - '0';
@@ -35,7 +32,7 @@ namespace B19_Ex01_05
 
         private static int smallestDigitInString(string i_input)
         {
-            int o_smallestDigit = i_input[0], i_currentDigit;
+            int o_smallestDigit = i_input[0] - '0', i_currentDigit;
             foreach (char c in i_input)
             {
                 i_currentDigit = c - '0';
@@ -64,7 +61,7 @@ namespace B19_Ex01_05
             return o_counter;
         }
 
-        private static int countDigitsBiggetThanLSD(String i_input)
+        private static int countDigitsBiggerThanLSD(String i_input)
         {
             int o_counter = 0;
             int i_currentDigit;
@@ -80,20 +77,19 @@ namespace B19_Ex01_05
             }
 
             return o_counter;
-             */
         }
 
         private static string getInputFromUser()
         {
-            string i_input;
+            string io_input;
 
             Console.WriteLine("Please insert a 8 digit positive number");
             do
             {
-                i_input = Console.ReadLine();
-            } while (!checkUserInput(i_input));
+                io_input = Console.ReadLine();
+            } while (!checkUserInput(io_input));
 
-            return i_input;
+            return io_input;
         }
 
         private static bool checkUserInput(string i_input)
