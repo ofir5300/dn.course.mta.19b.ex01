@@ -6,43 +6,43 @@ namespace B19_Ex01_04
     {
         public static void Main()
         {
-            String i_input = getInputFromUser();
-            isPalyndrom(i_input);
-            isDivisibleBy3(i_input);
-            countLowerCaseLetters(i_input);
+            string input = getInputFromUser();
+            isPalyndrom(input);
+            isDivisibleBy3(input);
+            countLowerCaseLetters(input);
 
             Console.ReadLine();
         }
 
-        private static int countLowerCaseLetters(String i_input)
+        private static int countLowerCaseLetters(string i_Input)
         {
-            int i_lowerCaseCounter = 0;
-            if (!isOnlyEnglishLetters(i_input))
+            int lowerCaseCounter = 0;
+            if (!isOnlyEnglishLetters(i_Input))
             {
                 Console.WriteLine("The string is a number so it has no Lower Case letters");
                 return 0;
             }
-            for (int i = 0; i < i_input.Length; i++)
+            for (int i = 0; i < i_Input.Length; i++)
             {
-                if (i_input[i] <= 'z' && i_input[i] >= 'a')
+                if (i_Input[i] <= 'z' && i_Input[i] >= 'a')
                 {
-                    i_lowerCaseCounter++;
+                    lowerCaseCounter++;
                 }
             }
-            Console.WriteLine("The string consist {0} lower case letters", i_lowerCaseCounter);
+            Console.WriteLine("The string consist {0} lower case letters", lowerCaseCounter);
 
-            return i_lowerCaseCounter;
+            return lowerCaseCounter;
         }
 
-        private static bool isDivisibleBy3(String i_input)
+        private static bool isDivisibleBy3(string i_Input)
         {
-            Int64 i_decimalInput;
+            Int64 decimalInput;
 
-            if (isOnlydigits(i_input))
+            if (isOnlydigits(i_Input))
             {
-                Int64.TryParse(i_input, out i_decimalInput);
+                Int64.TryParse(i_Input, out decimalInput);
 
-                if ((double)i_decimalInput % (double)3 == 0)
+                if ((double)decimalInput % (double)3 == 0)
                 {
                     Console.WriteLine("The number is divisble by 3");
                     return true;
@@ -58,32 +58,32 @@ namespace B19_Ex01_04
             return false;
         }
 
-        private static String getInputFromUser()
+        private static string getInputFromUser()
         {
-            String i_input;
+            string o_Input;
             Console.WriteLine("Please enter 12 letters or numbers:");
-            i_input = Console.ReadLine();
+            o_Input = Console.ReadLine();
 
-            while (!checkValidInput(i_input))
+            while (!checkValidInput(o_Input))
             {
                 Console.WriteLine("Please enter valid input:");
-                i_input = Console.ReadLine();
+                o_Input = Console.ReadLine();
             }
 
-            return i_input;
+            return o_Input;
         }
 
-        private static bool checkValidInput(String i_input)
+        private static bool checkValidInput(string i_Input)
         {
-            bool onlyLetters, onlyDigits, validLength;
+            bool v_onlyLetters, v_onlyDigits, v_validLength;
 
             // check validity rules
-            validLength = (i_input.Length == 12);
-            onlyDigits = isOnlydigits(i_input);
-            onlyLetters = isOnlyEnglishLetters(i_input);
+            v_validLength = (i_Input.Length == 12);
+            v_onlyDigits = isOnlydigits(i_Input);
+            v_onlyLetters = isOnlyEnglishLetters(i_Input);
 
             // return result
-            if ((onlyLetters || onlyDigits) && validLength)
+            if ((v_onlyLetters || v_onlyDigits) && v_validLength)
             {
                 return true;
             }
@@ -92,9 +92,9 @@ namespace B19_Ex01_04
             return false;
         }
 
-        public static bool isOnlydigits(String i_input)
+        public static bool isOnlydigits(string i_Input)
         {
-            foreach (char c in i_input)
+            foreach (char c in i_Input)
             {
                 if (!Char.IsDigit(c))
                 {
@@ -105,11 +105,11 @@ namespace B19_Ex01_04
             return true;
         }
 
-        public static bool isOnlyEnglishLetters(String i_input)
+        public static bool isOnlyEnglishLetters(string i_Input)
         {
-            foreach (char c in i_input)
+            foreach (char c in i_Input)
             {
-                if (!Char.IsLetter(c))
+                if (!char.IsLetter(c))
                 {
                     return false;
                 }
@@ -118,12 +118,12 @@ namespace B19_Ex01_04
             return true;
         }
 
-        private static void isPalyndrom(String i_input)
+        private static void isPalyndrom(string i_Input)
         {
-            if (isOnlyEnglishLetters(i_input))
+            if (isOnlyEnglishLetters(i_Input))
             {
                 Console.WriteLine("The string is {0} a palyndrom",
-                isPalyndromRecursive(i_input, 0, i_input.Length - 1) ? "indeed" : "not");
+                isPalyndromRecursive(i_Input, 0, i_Input.Length - 1) ? "indeed" : "not");
             }
             else
             {
@@ -131,19 +131,19 @@ namespace B19_Ex01_04
             }
         }
 
-        private static bool isPalyndromRecursive(String i_input, int i_start, int i_end)
+        private static bool isPalyndromRecursive(string i_Input, int i_Start, int i_End)
         {
-            if (i_start >= i_end)
+            if (i_Start >= i_End)
             {
                 return true;
             }
 
-            if (i_input[i_start] != i_input[i_end])
+            if (i_Input[i_Start] != i_Input[i_End])
             {
                 return false;
             }
 
-            return isPalyndromRecursive(i_input, i_start + 1, i_end - 1);
+            return isPalyndromRecursive(i_Input, i_Start + 1, i_End - 1);
         }
 
     }

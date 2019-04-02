@@ -15,98 +15,98 @@ namespace B19_Ex01_05
             Console.ReadLine();
         }
 
-        private static int biggestDigitInString(string i_input)
+        private static int biggestDigitInString(string i_Input)
         {
-            int o_biggestDigit = i_input[0] - '0', i_currentDigit;
-            foreach (char c in i_input)
+            int biggestDigit = i_Input[0] - '0', currentDigit;
+            foreach (char c in i_Input)
             {
-                i_currentDigit = c - '0';
-                if(o_biggestDigit < i_currentDigit)
+                currentDigit = c - '0';
+                if(biggestDigit < currentDigit)
                 {
-                    o_biggestDigit = i_currentDigit;
+                    biggestDigit = currentDigit;
                 }
             }
 
-            return o_biggestDigit;
+            return biggestDigit;
         }
 
-        private static int smallestDigitInString(string i_input)
+        private static int smallestDigitInString(string i_Input)
         {
-            int o_smallestDigit = i_input[0] - '0', i_currentDigit;
-            foreach (char c in i_input)
+            int o_SmallestDigit = i_Input[0] - '0', currentDigit;
+            foreach (char c in i_Input)
             {
-                i_currentDigit = c - '0';
-                if (o_smallestDigit > i_currentDigit)
+                currentDigit = c - '0';
+                if (o_SmallestDigit > currentDigit)
                 {
-                    o_smallestDigit = i_currentDigit;
+                    o_SmallestDigit = currentDigit;
                 }
             }
 
-            return o_smallestDigit;
+            return o_SmallestDigit;
         }
 
-        private static int countDivisibleBy3Numbers(String i_input)
+        private static int countDivisibleBy3Numbers(string i_Input)
         {
-            int o_counter = 0, i_currentDigit;
+            int o_Counter = 0, currentDigit;
 
-            foreach (char c in i_input)
+            foreach (char c in i_Input)
             {
-                i_currentDigit = c - '0';
-                if((double)i_currentDigit % 3 == 0)
+                currentDigit = c - '0';
+                if((double)currentDigit % 3 == 0)
                 {
-                    o_counter++;
+                    o_Counter++;
                 }
             }
 
-            return o_counter;
+            return o_Counter;
         }
 
-        private static int countDigitsBiggerThanLSD(String i_input)
+        private static int countDigitsBiggerThanLSD(string i_Input)
         {
-            int o_counter = 0;
-            int i_currentDigit;
-            int lsd = i_input[7] - '0';
+            int o_Counter = 0;
+            int currentDigit;
+            int lsd = i_Input[7] - '0';
 
-            foreach (char c in i_input)
+            foreach (char c in i_Input)
             {
-                i_currentDigit = c - '0';
-                if (i_currentDigit > lsd)
+                currentDigit = c - '0';
+                if (currentDigit > lsd)
                 {
-                    o_counter++;
+                    o_Counter++;
                 }
             }
 
-            return o_counter;
+            return o_Counter;
         }
 
         private static string getInputFromUser()
         {
-            string io_input;
+            string io_Input;
 
             Console.WriteLine("Please insert a 8 digit positive number");
             do
             {
-                io_input = Console.ReadLine();
-            } while (!checkUserInput(io_input));
+                io_Input = Console.ReadLine();
+            } while (!checkUserInput(io_Input));
 
-            return io_input;
+            return io_Input;
         }
 
-        private static bool checkUserInput(string i_input)
+        private static bool checkUserInput(string i_Input)
         {
-            int i_decimalInput;
+            int i_DecimalInput;
 
-            if (i_input.Length != 8)
+            if (i_Input.Length != 8)
             {
                 Console.WriteLine("Your input is different than 8 digits, please try again");
                 return false;
             }
-            else if(!Int32.TryParse(i_input, out i_decimalInput))
+            else if(!Int32.TryParse(i_Input, out i_DecimalInput))
             {
                 Console.WriteLine("Your input is not a number, please try again");
                 return false;
             }
-            else if(i_decimalInput <= 0)
+            else if(i_DecimalInput <= 0)
             {
                 Console.WriteLine("Your input is not positive, please try again");
                 return false;
