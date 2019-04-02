@@ -1,0 +1,10 @@
+==========================Exercise Checking Report==========================
+Exercise No...........: 1
+First Student Details.: Ilan Kushnir 203442306
+Second Student Details.: Ofir Cohen 307921320
+Delivery Date.........: 02.04.19
+Delivered In Delay....: no
+Delay Reason..........: no delay
+Visual Studio Version.: 2017
+Comments..............: none
+=======================End Exercise Checking Report=========================
